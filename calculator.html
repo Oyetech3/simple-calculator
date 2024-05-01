@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+   <section id="allbody">
+
+    <div class="calculator">
+        <div id="displayer" class="displayer"></div>
+        
+        <div id="but">
+        <button id="off" onclick="off()">OFF</button>
+        <div class="brackets">
+            <button id="bra1" onclick="operands('(')">(</button>
+            <button id="bra2" onclick="operands(')')">)</button>
+        </div>
+    </div>
+
+        <div class="calcelem">
+            <button id="ac" onclick="clearIt()">AC</button>
+            <button id="sqrt" onclick="operands('Math.sqrt')">sqrt</button>
+            <button id="per" onclick="operands('/100')">%</button>
+            <button id="button" class="ev" onclick="operands('/')">/</button>
+            <button id="seven" onclick="numbers(7)">7</button>
+            <button id="eight" onclick="numbers(8)">8</button>
+            <button id="nine"  onclick="numbers(9)">9</button>
+            <button id="mul" class="ev" onclick="operands('*')">*</button>
+            <button id="four"  onclick="numbers(4)">4</button>
+            <button id="five"  onclick="numbers(5)">5</button>
+            <button id="six"  onclick="numbers(6)">6</button>
+            <button id="sub" class="ev" onclick="operands('-')">-</button>
+            <button id="one"  onclick="numbers(1)">1</button>
+            <button id="two"  onclick="numbers(2)">2</button>
+            <button id="three"  onclick="numbers(3)">3</button>
+            <button id="add" class="ev" onclick="operands('+')">+</button>
+            <button id="zero"  onclick="numbers(0)">0</button>
+            <button id="dot"  onclick="numbers('.')">.</button>
+            <button id="equal" onclick="calculate()">=</button>
+            
+        </div>
+    </div>
+
+    <script>
+
+
+        //variable defination
+        let initial = ""
+        let display = document.getElementById("displayer")
+        display.innerHTML = 0
+
+        //operands function
+        function operands(x) {
+            initial+= x
+            answer()
+        }
+        //numbers operands
+        function numbers(x) {
+            initial+= x
+            answer()
+        }
+        //clear function
+        function clearIt() {
+            initial = 0
+            answer()
+        }
+        function off() {
+            initial = ''
+            answer()
+        }
+        //answer function
+        function answer() {
+                display.innerHTML = initial
+          }
+        //calculate function
+        function calculate() {
+           try {
+            initial = eval(initial).toString()
+            answer()
+        }
+        catch(error) {
+            display.innerHTML = "Math error"
+        }
+        }    
+      
+
+    </script>
+
+   </section> 
+</body>
+</html>
